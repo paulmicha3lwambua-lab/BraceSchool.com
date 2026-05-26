@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Brace Schools - Where innovation meets excellence. CBE Senior School in Kitengela, Kenya.">
+  <title>The Brace Schools | Kitengela</title>
+  
+  <style>
+    :root {
+      --primary: #8B0000;      /* Maroon */
+      --primary-dark: #660000; /* Darker maroon for hover */
+      --accent: #FFD700;       /* Yellow */
+      --accent-dark: #E6C200;  /* Darker yellow for hover */
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg: #ffffff;
+      --bg-light: #f9fafb;
+      --border: #e5e7eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: var(--bg);
+      border-bottom: 3px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: var(--text);
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-dark);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    /* Pages */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 32px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-light {
+      background: var(--bg-light);
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .section p.subtitle {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .card {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      border-top: 4px solid var(--accent);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(139, 0, 0, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(139, 0, 0, 0.2);
+    }
+
+    /* Form section */
+    .form-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(139, 0, 0, 0.1);
+      border: 2px solid var(--border);
+    }
+
+    .form-wrapper iframe {
+      width: 100%;
+      height: 1600px;
+      border: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 48px 0 24px;
+      text-align: center;
+      border-top: 4px solid var(--accent);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 3px solid var(--accent);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+
+      .apply-btn {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .section {
+        padding: 48px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" data-page="home">
+          <img src="adil-edin-dkx1bs1eN14-unsplash.jpg" alt="Brace Schools Logo" loading="lazy">
+          The Brace Schools
+        </a>
+        <ul class="nav-links">
+          <li><a data-page="home" class="active">Home</a></li>
+          <li><a data-page="about">About</a></li>
+          <li><a data-page="admissions">Admissions</a></li>
+          <li><a data-page="contact">Contact</a></li>
+        </ul>
+        <a class="btn apply-btn" data-page="admissions">Apply Now</a>
+        <button class="mobile-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home Page -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <div class="container">
+        <h1>Where Innovation Meets Excellence</h1>
+        <p>CBE Senior School in Kitengela with modern classrooms, labs, and ICT Hub</p>
+        <a class="btn btn-accent" data-page="admissions">Start Your Application</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Why Choose Brace Schools</h2>
+        <p class="subtitle">Empowering learners with skills for the future</p>
+        <div class="grid">
+          <div class="card">
+            <img src="hans-reniers-lQGJCMY5qcM-unsplash.jpg" alt="Students in Science Lab" loading="lazy">
+            <h3>Modern Facilities</h3>
+            <p>State-of-the-art laboratories, ICT Hub, and swimming facilities designed for 21st century learning.</p>
+          </div>
+          <div class="card">
+            <img src="national-cancer-institute-N_aihp118p8-unsplash.jpg" alt="Students in Classroom" loading="lazy">
+            <h3>Competent Facilitators</h3>
+            <p>Experienced teachers committed to CBC curriculum and student success.</p>
+          </div>
+          <div class="card">
+            <img src="omar-ramadan-eEhOyEtBGMQ-unsplash.jpg" alt="Students Playing Sports" loading="lazy">
+            <h3>Co-Curricular Activities</h3>
+            <p>Sports, arts, and clubs that develop well-rounded students beyond the classroom.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <h2>Life at Brace Schools</h2>
+        <p class="subtitle">A glimpse into our classrooms, labs, and sports activities</p>
+        <div class="gallery-grid">
+          <img src="emily-wade-DfqQKk2qqaY-unsplash.jpg" alt="ICT Hub" loading="lazy">
+          <img src="rajat-sarki-akSG4TrVhr0-unsplash (2).jpg" alt="Swimming Pool" loading="lazy">
+          <img src="sarah-brown-RapDxBSMKzQ-unsplash.jpg" alt="Art Class" loading="lazy">
+          <img src="priscilla-du-preez-ggeZ9oyI-PE-unsplash.jpg" alt="School Library" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="text-align: center;">
+        <h2>Admissions Open for 2026</h2>
+        <p class="subtitle">No application, admission, or caution fees for 2026 enrollment</p>
+        <a class="btn" data-page="admissions">Apply Online</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- About Page -->
+  <div id="about" class="page">
+    <section class="section">
+      <div class="container">
+        <h2>About The Brace Schools</h2>
+        <p class="subtitle">Building future leaders in Kitengela</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Our Mission</h3>
+            <p>To provide quality education that nurtures creativity, critical thinking, and character development under the CBC curriculum.</p>
+          </div>
+          <div class="card">
+            <h3>Our Vision</h3>
+            <p>To be a leading institution where innovation meets excellence, producing globally competitive learners.</p>
+          </div>
+          <div class="card">
+            <h3>Our Values</h3>
+            <p>Integrity, Excellence, Innovation, and Community. We believe in holistic education for every child.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Admissions Page -->
+  <div id="admissions" class="page">
+    <section class="section">
+      <div class="container">
+        <h2>Student Application</h2>
+        <p class="subtitle">Complete the form below to apply. You’ll receive a confirmation email once submitted.</p>
+        
+        <div class="form-wrapper">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScNGqgd2NCL-SwyLnVKyHUrK-cQAEkGOwiMQmRrd-4oNkwOwQ/viewform?embedded=true" loading="lazy">
+            Loading…
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <h2>Need Help?</h2>
+        <p class="subtitle">Contact our admissions office</p>
+        <div style="text-align: center;">
+          <p>📞 0708 846 548</p>
+          <p>📍 Kitengela - Acacia in Acacia Paradise Estate</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact Page -->
+  <div id="contact" class="page">
+    <section class="section">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p class="subtitle">We’d love to hear from you</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Visit Us</h3>
+            <p>Kitengela - Acacia in Acacia Paradise Estate<br>Kitengela, Kenya</p>
+          </div>
+          <div class="card">
+            <h3>Call Us</h3>
+            <p>0708 846 548<br>Available Mon-Fri, 8am-5pm</p>
+          </div>
+          <div class="card">
+            <h3>Email Us</h3>
+            <p>info@braceschools.co.ke<br>We reply within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p><strong>The Brace Schools</strong></p>
+      <p>Kitengela - Acacia in Acacia Paradise Estate</p>
+      <p>📞 0708 846 548 | 🌐 info@braceschools.co.ke</p>
+      <p style="margin-top: 24px; font-size: 14px; opacity: 0.7;">© 2026 The Brace Schools. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pages = document.querySelectorAll('.page');
+      const navLinks = document.querySelectorAll('[data-page]');
+      const mobileToggle = document.querySelector('.mobile-toggle');
+      const navMenu = document.querySelector('.nav-links');
+
+      function showPage(pageId) {
+        pages.forEach(page => {
+          page.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.page === pageId) {
+            link.classList.add('active');
+          }
+        });
+        
+        navMenu.classList.remove('active');
+        window.scrollTo(0, 0);
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const pageId = link.dataset.page;
+          showPage(pageId);
+        });
+      });
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
